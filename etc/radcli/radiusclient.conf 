@@ -1,0 +1,62 @@
+# RADIUS settings
+
+# The name to be used to identify this NAS (server). If set it will
+# be used in NAS-Identifier field and will override any such setting
+# by the application.
+#
+#nas-identifier my-server-name
+
+# Override the IP (or IPv6) address of the NAS.
+#nas-ip         10.100.5.3
+#nas-ip         ::1
+
+# RADIUS server to use for authentication requests.
+# optionally you can specify a the port number on which is remote
+# RADIUS listens separated by a colon from the hostname. if
+# no port is specified /etc/services is consulted of the radius
+# service. if this fails also a compiled in default is used.
+# For IPv6 addresses use the '[IPv6]:port:secret' format, or
+# simply '[IPv6]'. You may specify more than a single server
+# in a comma-separated list.
+#
+authserver      192.100.200.148
+#authserver     127.1.1.1:9999,172.17.0.1
+
+# RADIUS server to use for accouting requests. All that is
+# written for authserver applies, in acctserver as well.
+#
+acctserver      192.100.200.148
+
+# File holding shared secrets used for the communication
+# between the RADIUS client and server. When multiple
+# server
+servers         /etc/radcli/servers
+
+# Dictionary of allowed attributes and values. That depends
+# heavily on the features of your server. A default dictionary
+# is installed in /usr/share/radcli/dictionary
+dictionary      /etc/radcli/dictionary
+
+# default authentication realm to append to all usernames if no
+# realm was explicitly specified by the user
+# the radiusd directly form Livingston doesnt use any realms, so leave
+# it blank then
+default_realm
+
+# time to wait for a reply from the RADIUS server
+radius_timeout  10
+
+# resend request this many times before trying the next server
+radius_retries  3
+
+# local address from which radius packets have to be sent
+bindaddr *
+
+# Transport Protocol Support
+# Available options - 'tcp', 'udp', 'tls' and 'dtls'.
+# If commented out, udp will be used.
+#serv-type   udp
+
+
+# To enable verbose debugging messages in syslog, enable the following
+clientdebug 1

@@ -1,0 +1,11 @@
+#!/bin/bash
+#       $1      the interface name used by pppd (e.g. ppp3)
+#       $2      the tty device name
+#       $3      the tty device speed
+#       $4      the local IP address for the interface
+#       $5      the remote IP address
+#       $6      the parameter specified by the 'ipparam' option to pppd
+source /opt/envs_docker.sh
+source /opt/envs.sh
+logger "close connection $1 $5"
+node /opt/l2tp-js/logoutConnectionInfo.js "$5" "$1"

@@ -1,0 +1,45 @@
+{
+  "radsec": {
+    "privateKey": "../key.pem",
+    "certificateFile": "../cert.pem",
+    "CACertificateFile": "../cert.pem",
+    "certificateKeyPassword": null
+  },
+  "radius": {
+    "protocol": "pap"
+  },
+  "keycloak": {
+    "json": {
+      "realm": "otpPassword",
+      "auth-server-url": "http://192.100.200.148:8090/auth/",
+      "ssl-required": "external",
+      "resource": "vpn-client",
+      "credentials": {
+        "secret": "5a1fc1d4-725d-4a9d-b5e8-3eef59f76c92"
+      },
+      "confidential-port": 0
+    }
+  },
+  "authorizationMap": {
+    "roles": {
+      "route1Role": {
+        "routes": [
+          "192.168.8.0/24",
+          "192.168.88.0/24"
+        ]
+      },
+      "route2Role": {
+        "forwarding": [
+          {
+            "sourceIp": "192.168.8.46",
+            "sourcePort": 8080,
+            "externalPort": 7846
+          }
+        ]
+      }
+    }
+  },
+  "ipsec": {
+    "secret": "1234567890"
+  }
+}
