@@ -45,7 +45,7 @@ chmod +x /etc/ppp/ip-up.d/routes-up
 #/opt/enc_passwords.sh
 /opt/ipsecSecret.sh
 service ipsec restart
-service xl2tpd start
+service xl2tpd restart
 if [[ "x${RAD_SEC}" = "xtrue" ]]; then
   /opt/radsec.sh
 fi
