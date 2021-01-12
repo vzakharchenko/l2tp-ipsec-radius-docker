@@ -21,6 +21,7 @@ curl -sSL https://raw.githubusercontent.com/vzakharchenko/l2tp-ipsec-radius-dock
  - Keycloak authentication and authorization
  - Radius client
  - RadSec protocol (Radius over TLS)
+ - IpSec
  - [Management routing  and portforwarding using json file](#configjson-structure)
  - [Connect to LAN from the internet](#connect-to-lan-from-the--internet)
  - [Port forwarding](#port-forwarding)
@@ -75,7 +76,7 @@ Where
 - **KEYCLOAK_ROLE**  Role assigned to user
 - **IPSEC_SHARED_SECRET**  Ipsec shared secret
 
-## Installation ![Keycloak-Radius-plugin](https://github.com/vzakharchenko/keycloak-radius-plugin)
+## Installation [Keycloak-Radius-plugin](https://github.com/vzakharchenko/keycloak-radius-plugin)
 - [Release Setup](https://github.com/vzakharchenko/keycloak-radius-plugin#release-setup)
 - [Docker Setup](https://github.com/vzakharchenko/keycloak-radius-plugin/blob/master/docker/README.md)
 - [Manual Setup](https://github.com/vzakharchenko/keycloak-radius-plugin#manual-setup)
@@ -121,6 +122,7 @@ Where
   }
 }
 ```
+7. create private key, certificate  and CA certificate : RADSEC_PRIVATE_KEY ,  RADSEC_CERTIFICATE_FILE, 
 
 
 ## Examples
@@ -332,4 +334,3 @@ export CONFIG_PATH=/opt/config.json
 curl -sSL https://raw.githubusercontent.com/vzakharchenko/docker-l2tp-port-forwarding/main/l2tp-js/generateDockerCommands.js -o generateDockerCommands.js
 `node generateDockerCommands.js`
 ```
-6. reboot
