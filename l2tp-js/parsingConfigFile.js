@@ -69,6 +69,7 @@ function radsecSettings(settings, cJson) {
     envs += `export USE_COA=${settings.radiusInfo.useCoA}\n`
     envs += `export RAD_SEC=${settings.radiusInfo.radsec}\n`
     envs += `export UDP_RADIUS=${settings.radiusInfo.udpRadius}\n`
+    envs += `export SECRET=${settings.radiusInfo.secret}\n`
     envs += `export STATION_ID=${stationid}\n`
     let redirSet = new Set();
     redirSet.add('logger "setup forwarding"');
