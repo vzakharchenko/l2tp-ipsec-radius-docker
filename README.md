@@ -12,9 +12,7 @@ Access private network from the internet, support port forwarding from private n
 [create /opt/config.json](#configjson-structure)
 ```
 sudo apt-get update && sudo apt-get install -y curl
-curl -sSL https://raw.githubusercontent.com/vzakharchenko/l2tp-ipsec-radius-docker/main/ubuntu.install -o ubuntu.install
-chmod +x ubuntu.install
-./ubuntu.install
+curl -sSL https://raw.githubusercontent.com/vzakharchenko/l2tp-ipsec-radius-docker/main/ubuntu.install| bash
 ```
 
 

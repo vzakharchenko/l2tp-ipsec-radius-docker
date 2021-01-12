@@ -53,6 +53,7 @@ if [[ "x${USE_COA}" = "xtrue" ]]; then
  pm2 start /opt/coa/server.js
 fi
 /opt/redir.sh
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 netstat -tulpn >> /var/log/messages
 tail -f /var/log/messages
 
