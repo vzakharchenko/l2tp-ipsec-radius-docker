@@ -30,7 +30,7 @@ function parseFile(cJson) {
             }));
         }
     }
-    console.log('docker run -d --name=l2tp-ipsec-radius-docker -p 500:500/udp -p 4500:4500/udp -p 3799:3799 ' + redir +
+    console.log('docker run -d --name=l2tp-ipsec-radius-docker -p 500:500/udp -p 4500:4500/udp -p 3799:3799/udp ' + redir +
         `-v ${configPath}:/opt/config.json ${radsec} --privileged --restart=always vassio/l2tp-ipsec-radius-docker:latest`)
 }
 
