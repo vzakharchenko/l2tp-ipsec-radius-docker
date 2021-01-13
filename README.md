@@ -28,6 +28,7 @@ curl -sSL https://raw.githubusercontent.com/vzakharchenko/l2tp-ipsec-radius-dock
  - [Connect multiple networks](#connect-multiple-networks)
  - [Automatic installation(Ubuntu)](#automatic-cloud-installation)
  - [Manual Installation steps (Ubuntu)](#manual-cloud-installationubuntu)
+ - [Deny user access to VPN](#deny-user-access-to-vpn)
 
 ## config.json structure
 
