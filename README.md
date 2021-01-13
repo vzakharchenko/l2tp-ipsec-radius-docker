@@ -303,6 +303,16 @@ chmod +x ubuntu.install
 ./ubuntu.install
 ```
 
+### Deny access user to use VPN
+
+- create client/realm role and add attribute:
+```
+REJECT_Connect-Info=L2TP
+```
+![](./img/RejectRole.png)
+
+- assign a role to a user and after that the user will always be rejected
+
 ### Manual Cloud Installation(Ubuntu)
 
 1. install all dependencies

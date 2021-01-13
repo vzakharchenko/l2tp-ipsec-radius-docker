@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-service rsyslog start
+service rsyslog restart
 iptables-restore < /etc/iptables/rules.v4
 
 # service pptpd restart
