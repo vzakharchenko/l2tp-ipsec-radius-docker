@@ -303,7 +303,7 @@ chmod +x ubuntu.install
 ./ubuntu.install
 ```
 
-### Deny access user to use VPN
+### Deny user access to VPN
 
 - create client/realm role and add attribute:
 ```
