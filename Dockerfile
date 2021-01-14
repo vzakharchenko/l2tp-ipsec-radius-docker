@@ -2,7 +2,7 @@ FROM hwdsl2/ipsec-vpn-server
 MAINTAINER Vasyl Zakharchenko <vaszakharchenko@gmail.com>
 LABEL author="Vasyl Zakharchenko"
 LABEL email="vaszakharchenko@gmail.com"
-LABEL name="docker-l2tp-ipsec-radius-docker"
+LABEL name="l2tp-ipsec-radius-docker"
 ENV SWAN_VER 4.1
 ENV DEBIAN_FRONTEND noninteractive
 ENV VPN_L2TP_NET "192.168.122.0/24"
