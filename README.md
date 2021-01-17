@@ -1,4 +1,5 @@
 # Docker image with L2TP (IpSec, RadSec) server including routing and port forwarding
+![l2tp-ipsec-radius-docker amd64, arm/v7, arm64](https://github.com/vzakharchenko/l2tp-ipsec-radius-docker/workflows/l2tp-ipsec-radius-docker%20amd64,%20arm/v7,%20arm64/badge.svg?branch=main)  
 
 ## Description
 Access private network from the internet, support port forwarding from private network to outside via cloud.
