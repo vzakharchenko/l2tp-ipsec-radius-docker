@@ -8,7 +8,8 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV VPN_L2TP_NET "192.168.122.0/24"
 ENV VPN_L2TP_POOL "192.168.122.10-192.168.122.254"
 ENV VPN_L2TP_LOCAL "192.168.122.1"
-RUN apt-get update && apt-get install -y curl gnupg2
+RUN apt-get update && apt-get install -y curl gnupg2 ca-certificates
+RUN update-ca-certificates --fresh
 RUN curl -sL https://deb.nodesource.com/setup_15.x | bash -
 RUN apt-get update && apt-get install -y rsyslog iproute2 redir net-tools inetutils-inetd iptables-persistent systemd nodejs  libradcli4 radsecproxy wget
 RUN npm i pm2 -g
