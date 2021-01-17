@@ -10,7 +10,7 @@ ENV VPN_L2TP_POOL "192.168.122.10-192.168.122.254"
 ENV VPN_L2TP_LOCAL "192.168.122.1"
 RUN apt-get update && apt-get install -y curl gnupg2
 RUN curl -sL https://deb.nodesource.com/setup_15.x | bash -
-RUN apt-get update && apt-get install -y rsyslog iproute2 redir net-tools inetutils-inetd iptables-persistent systemd nodejs  libradcli4 radsecproxy wget npm
+RUN apt-get update && apt-get install -y rsyslog iproute2 redir net-tools inetutils-inetd iptables-persistent systemd nodejs  libradcli4 radsecproxy wget
 RUN npm i pm2 -g
 RUN ln -s  /etc/radcli /etc/radiusclient
 RUN echo "net.ipv4.ip_forward=1">/etc/sysctl.conf
