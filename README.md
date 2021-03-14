@@ -51,11 +51,12 @@ curl -sSL https://raw.githubusercontent.com/vzakharchenko/l2tp-ipsec-radius-dock
       "roles":{
          KEYCLOAK_ROLE:{
             "routes":ROUTING_TABLE,
-            "forwarding":{
+            "forwarding":[{
                "sourceIp":APPLICATION_IP,
                "sourcePort":APPLICATION_PORT,
                "externalPort":REMOTE_PORT
             }
+            ]
          }
       }
    },
@@ -124,7 +125,7 @@ Where
   }
 }
 ```
-7. create private key, certificate  and CA certificate : RADSEC_PRIVATE_KEY ,  RADSEC_CERTIFICATE_FILE, 
+7. create private key, certificate  and CA certificate : RADSEC_PRIVATE_KEY ,  RADSEC_CERTIFICATE_FILE,
 
 
 ## Examples
