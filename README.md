@@ -1,5 +1,5 @@
 # Docker image with L2TP (IpSec, RadSec) server including routing and port forwarding
-![l2tp-ipsec-radius-docker amd64, arm/v7, arm64](https://github.com/vzakharchenko/l2tp-ipsec-radius-docker/workflows/l2tp-ipsec-radius-docker%20amd64,%20arm/v7,%20arm64/badge.svg?branch=main)  
+![l2tp-ipsec-radius-docker amd64, arm/v7, arm64](https://github.com/vzakharchenko/l2tp-ipsec-radius-docker/workflows/l2tp-ipsec-radius-docker%20amd64,%20arm/v7,%20arm64/badge.svg?branch=main)
 
 ## Description
 Access private network from the internet, support port forwarding from private network to outside via cloud.
@@ -54,6 +54,7 @@ curl -sSL https://raw.githubusercontent.com/vzakharchenko/l2tp-ipsec-radius-dock
             "forwarding":[{
                "sourceIp":APPLICATION_IP,
                "sourcePort":APPLICATION_PORT,
+               "externalIP":REMOTE_IP,
                "externalPort":REMOTE_PORT
             }
             ]
@@ -74,6 +75,7 @@ Where
 - **RADIUS_PROTOCOL** Radius protocol. Supported pap,chap and mschap-v2. If used RadSec(Radius over TLS) then better to use PAP, otherwise mschap-v2
 - **APPLICATION_IP** service IP behind NAT (port forwarding)
 - **APPLICATION_PORT** service PORT behind NAT (port forwarding)
+- **REMOTE_IP**  Remote Ip
 - **REMOTE_PORT**  port accessible from the internet (port forwarding)
 - **ROUTING_TABLE**  ip with subnet for example 192.168.8.0/24
 - **KEYCLOAK_ROLE**  Role assigned to user
