@@ -110,11 +110,11 @@ Where
   "keycloak": {
     "json": {
         "realm": "VPN",
-        "auth-server-url": "http://192.168.1.234:8090/auth/",
+        "auth-server-url": "http://keycloak/auth/",
         "ssl-required": "external",
         "resource": "vpn-client",
         "credentials": {
-            "secret": "12747feb-794b-4561-a54f-1f49e9366b21"
+            "secret": "vpn-client"
          },
         "confidential-port": 0
     }
@@ -132,10 +132,22 @@ Where
 
 ## Examples
 
+- Run Keycloak-radius-plugin in Docker
+```
+docker run -p 8090:8080 -e JAVA_OPTS="-Dkeycloak.profile.feature.scripts=enabled -Dkeycloak.profile.feature.upload_scripts=enabled -server -Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true" -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -v `pwd`/examples:/examples  -e KEYCLOAK_IMPORT=/examples/realm-export.json   vassio/keycloak-radius-plugin
+```
+| User      | Password   |  Role1           | Role2             |
+|:----------|:-----------|:-----------------|:-----------------|
+| user      | user       | X                | X                |
+| user1     | user1      | X                | -                |
+| user2     | user2      | -                | X                |
+| user3     | user3      | -                | -                |
+
 ### Connect to LAN from the  internet
+
 ![](https://github.com/vzakharchenko/l2tp-ipsec-radius-docker/blob/main/img/l2tpRoutingKeycloak.png?raw=true)
-**user1** - router with subnet 192.168.88.0/24 behind NAT ![](/img/Role1.png)  ![](/img/User1.png)  ![](/img/resetPassword.png)
-**user2** - user who has access to subnet 192.168.88.0/24 from the Internet ![](/img/User2.png)  ![](/img/resetPassword.png)
+- **user1** - router with subnet 192.168.88.0/24 behind NAT ![](/img/Role1.png)  ![](/img/User1.png)  ![](/img/resetPassword.png)
+- **user2** - user who has access to subnet 192.168.88.0/24 from the Internet ![](/img/User2.png)  ![](/img/resetPassword.png)
 ```json
 {
    "radsec":{
@@ -147,11 +159,11 @@ Where
    "keycloak":{
       "json":{
          "realm":"VPN",
-         "auth-server-url":"http://192.168.1.234:8090/auth/",
+         "auth-server-url":"http://<IP>:8090/auth/",
          "ssl-required":"external",
          "resource":"vpn-client",
          "credentials":{
-            "secret":"12747feb-794b-4561-a54f-1f49e9366b21"
+            "secret":"vpn-client"
          },
          "confidential-port":0
       }
@@ -179,8 +191,8 @@ Where
 
 ### Port forwarding
 ![](https://github.com/vzakharchenko/l2tp-ipsec-radius-docker/blob/main/img/l2tpKeycloakWithRouting.png?raw=true)
-**user** - router with subnet 192.168.88.0/24 behind NAT. ![](/img/Role1.png)  ![](/img/User1.png)  ![](/img/resetPassword.png)
-Subnet contains service http://192.168.8.254:80 which is available at from http://195.138.164.211:9000
+- **user** - router with subnet 192.168.88.0/24 behind NAT. ![](/img/Role1.png)  ![](/img/User1.png)  ![](/img/resetPassword.png)
+- Subnet contains service http://192.168.8.254:80 which is available at from http://195.138.164.211:9000
 
 ```json
 {
@@ -193,11 +205,11 @@ Subnet contains service http://192.168.8.254:80 which is available at from http:
    "keycloak":{
       "json":{
          "realm":"VPN",
-         "auth-server-url":"http://192.168.1.234:8090/auth/",
+         "auth-server-url":"http://<HOST_IP>:8090/auth/",
          "ssl-required":"external",
          "resource":"vpn-client",
          "credentials":{
-            "secret":"12747feb-794b-4561-a54f-1f49e9366b21"
+            "secret":"vpn-client"
          },
          "confidential-port":0
       }
@@ -225,9 +237,9 @@ Subnet contains service http://192.168.8.254:80 which is available at from http:
 ```
 ### connect multiple networks
 ![](https://github.com/vzakharchenko/l2tp-ipsec-radius-docker/blob/main/img/l2tpKeycloakWithRoutingMany.png?raw=true)
-**user1** - router with subnet 192.168.88.0/24 behind NAT. Subnet contains service http://192.168.88.254:80 which is available at from http://195.138.164.211:9000 ![](/img/Role1.png)  ![](/img/User1.png)  ![](/img/resetPassword.png)
-**user2** - router with subnet 192.168.89.0/24 behind NAT. ![](/img/Role2.png)  ![](/img/User2.png)  ![](/img/User2Role.png)  ![](/img/resetPassword.png)
-**user3** - user who has access to subnets 192.168.88.0/24 and 192.168.89.0/24 from the Internet  ![](/img/User2.png)  ![](/img/resetPassword.png)
+- **user1** - router with subnet 192.168.88.0/24 behind NAT. Subnet contains service http://192.168.88.254:80 which is available at from http://195.138.164.211:9000 ![](/img/Role1.png)  ![](/img/User1.png)  ![](/img/resetPassword.png)
+- **user2** - router with subnet 192.168.89.0/24 behind NAT. ![](/img/Role2.png)  ![](/img/User2.png)  ![](/img/User2Role.png)  ![](/img/resetPassword.png)
+- **user3** - user who has access to subnets 192.168.88.0/24 and 192.168.89.0/24 from the Internet  ![](/img/User2.png)  ![](/img/resetPassword.png)
 ```json
 {
    "radsec":{
@@ -239,11 +251,11 @@ Subnet contains service http://192.168.8.254:80 which is available at from http:
    "keycloak":{
       "json":{
          "realm":"VPN",
-         "auth-server-url":"http://192.168.1.234:8090/auth/",
+         "auth-server-url":"http:/<HOST_IP>:8090/auth/",
          "ssl-required":"external",
          "resource":"vpn-client",
          "credentials":{
-            "secret":"12747feb-794b-4561-a54f-1f49e9366b21"
+            "secret":"vpn-client"
          },
          "confidential-port":0
       }

@@ -19,7 +19,6 @@ psw_enc.sh
 ipsec.sh
 node_modules
 envs.sh
-example.json
 package-lock.json
 key.pem
 cert.pem

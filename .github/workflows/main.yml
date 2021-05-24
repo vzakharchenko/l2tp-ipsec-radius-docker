@@ -34,4 +34,4 @@ jobs:
           push: true
           tags: |
             vassio/l2tp-ipsec-radius-docker:latest
-            vassio/l2tp-ipsec-radius-docker:1.3.2
+            vassio/l2tp-ipsec-radius-docker:1.3.3
